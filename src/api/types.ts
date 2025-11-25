@@ -3,4 +3,5 @@ export interface ITask {
   name: string,
   start: string,
   end: string | null,
+  waiting: boolean,
 }

@@ -2,6 +2,7 @@
 
 import clsx from "clsx";
 import { TaskStarter } from "../components/TaskStarter";
+import { TasksList } from "../components/TasksList/TasksList";
 
 export default function Home() {
   return (
@@ -29,6 +30,7 @@ export default function Home() {
         'sm:items-start'
       )}>
         <TaskStarter />
+        <TasksList />
       </main>
     </div>
   );
