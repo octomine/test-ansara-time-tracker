@@ -1,4 +1,7 @@
+'use client';
+
 import clsx from "clsx";
+import { TaskStarter } from "../components/TaskStarter";
 
 export default function Home() {
   return (
@@ -25,7 +28,7 @@ export default function Home() {
         'dark:bg-black',
         'sm:items-start'
       )}>
-        ...
+        <TaskStarter />
       </main>
     </div>
   );
