@@ -21,7 +21,7 @@ export const useAddTask = () => {
       tasksMock.push({
         id: v4(),
         name,
-        start: format(new Date(), 'HH-mm-ss'),
+        start: format(new Date(), 'HH:mm:ss'),
         end: null,
         waiting: false,
       });
