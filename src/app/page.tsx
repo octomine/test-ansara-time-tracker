@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import { TaskStarter } from "../components/TaskStarter";
-import { TasksList } from "../components/TasksList/TasksList";
+import { TasksList } from "../components/TasksList";
 
 export default function Home() {
   return (

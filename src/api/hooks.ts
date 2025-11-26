@@ -1,6 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { format } from "date-fns";
-import { v4 } from "uuid";
 
 import { ITask } from "./types";
 
@@ -22,7 +21,7 @@ export const useAddTask = () => {
   return useMutation({
     mutationFn: (name: string) => {
       tasksMock.push({
-        id: v4(),
+        id: (10000000 - Math.floor(Math.random() * 100000)).toString(),
         name,
         start: format(new Date(), 'HH:mm:ss'),
         end: null,
@@ -45,7 +44,7 @@ export const useStopTask = () => {
         const { id: taskId, waiting } = task;
         return { ...task, waiting: id === taskId ? true : waiting }
       });
-      
+
       return Promise.resolve();
     },
     onSuccess: () => {
