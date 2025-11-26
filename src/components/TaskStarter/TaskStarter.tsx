@@ -3,6 +3,7 @@
 import clsx from "clsx";
 import { FC, useState } from "react";
 import { useTranslations } from "next-intl";
+import { PlayCircleOutlined } from "@ant-design/icons";
 
 import { Input } from "../Input";
 import { Button } from "../Button";
@@ -26,7 +27,9 @@ export const TaskStarter: FC = () => {
   return (
     <div data-testid='task-starter-control' className={clsx('flex', 'flex-row', 'items-center')}>
       <Input value={value} onChange={onChangeHandler} placeholder={t('newTask')} />
-      <Button onClick={onClickHandler}>{'>'}</Button>
+      <Button onClick={onClickHandler}>
+        <PlayCircleOutlined />
+      </Button>
     </div>
   )
 }

@@ -5,6 +5,8 @@ import { useTranslations } from "next-intl";
 import { useGetTasks } from "@/src/api/hooks";
 import { ITask } from "@/src/api/types";
 import { Task } from "../Task";
+import { Button } from "../Button";
+import { PlusCircleOutlined } from "@ant-design/icons";
 
 const renderTasks = (tasks: ITask[]) => tasks.map((task) => <Task key={task.id} {...task} />)
 
@@ -15,6 +17,8 @@ export const TasksList: FC = () => {
   // TODO: разобраться, почему иначе не работает
   console.log(hook);
   const { data } = hook;
+
+  const addDoneTaskHandler = () => { }
 
   const activeTasks = data?.filter((task) => !task.end && !task.waiting) || [];
   const pausedTasks = data?.filter((task) => !task.end && task.waiting) || [];
@@ -30,6 +34,9 @@ export const TasksList: FC = () => {
       </>)}
       <div className={clsx('flex', 'flex-row', 'items-center')}>
         <div>{t('doneTasks')}</div>
+        <Button onClick={addDoneTaskHandler}>
+          <PlusCircleOutlined />
+        </Button>
       </div>
       {doneTasks.length === 0 ? t('noDoneTasks') : renderTasks(doneTasks)}
     </div>
