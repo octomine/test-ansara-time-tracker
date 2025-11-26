@@ -15,7 +15,7 @@ export const TasksList: FC = () => {
   const hook = useGetTasks();
 
   // TODO: разобраться, почему иначе не работает
-  console.log(hook);
+  // console.log(hook);
   const { data } = hook;
   // console.log(data);
 

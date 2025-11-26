@@ -47,8 +47,8 @@ export const useStopTask = () => {
       console.log(tasksMock);
       return Promise.resolve();
     },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['getTasks'] })
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ['getTasks'] })
     },
   });
 }
