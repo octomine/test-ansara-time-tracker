@@ -4,14 +4,14 @@ import { CheckCircleOutlined, PauseCircleOutlined, PlayCircleOutlined } from "@a
 
 import { ITask } from "@/src/api/types"
 import { Button } from "../Button";
-import { useStartTask, useStopTask } from "@/src/api/hooks";
+import { useDoneTask, useStartTask, useStopTask } from "@/src/api/hooks";
 
 export const Task: FC<ITask> = ({ id, name, start, end, waiting }) => {
   const { mutate: pause } = useStopTask();
   const { mutate: play } = useStartTask();
+  const { mutate: done } = useDoneTask();
 
-
-  const onDoneHandler = () => { }
+  const onDoneHandler = () => { done(id); }
   const onPauseHandler = () => { pause(id); }
   const onPlayHandler = () => { play(id); }
 

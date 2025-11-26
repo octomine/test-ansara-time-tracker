@@ -41,13 +41,11 @@ export const useStopTask = () => {
 
   return useMutation({
     mutationFn: (id: string) => {
-      console.log('STOP!!1');
       tasksMock = tasksMock.map((task) => {
-        const { id: taskId, waiting } = task
-        console.log(id === taskId);
+        const { id: taskId, waiting } = task;
         return { ...task, waiting: id === taskId ? true : waiting }
       });
-      console.log(tasksMock);
+      
       return Promise.resolve();
     },
     onSuccess: () => {
@@ -70,5 +68,22 @@ export const useStartTask = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['getTasks'] })
     },
+  });
+}
+
+export const useDoneTask = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (id: string) => {
+      tasksMock = tasksMock.map((task) => {
+        const { id: taskId } = task
+        return id === taskId ? { ...task, end: format(new Date(), 'HH:mm:ss') } : task
+      });
+      return Promise.resolve();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['getTasks'] })
+    }
   });
 }
