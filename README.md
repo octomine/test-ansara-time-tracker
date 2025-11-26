@@ -29,4 +29,4 @@ dev сервер открывается в браузере [http://localhost:30
 
 ## Деплой
 
-Деплоится на vercel [https://vercel.com/octomines-projects/test-ansara-time-tracker](https://vercel.com/octomines-projects/test-ansara-time-tracker)
+Деплоится на vercel [https://test-ansara-time-tracker.vercel.app/](https://test-ansara-time-tracker.vercel.app/)
