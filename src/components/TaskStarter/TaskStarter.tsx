@@ -25,7 +25,7 @@ export const TaskStarter: FC = () => {
   }
 
   return (
-    <div data-testid='task-starter-control' className={clsx('flex', 'flex-row', 'items-center')}>
+    <div data-testid='task-starter-control' className={clsx('flex', 'flex-row', 'items-center', 'gap-2')}>
       <Input value={value} onChange={onChangeHandler} placeholder={t('newTask')} />
       <Button onClick={onClickHandler}>
         <PlayCircleOutlined />
