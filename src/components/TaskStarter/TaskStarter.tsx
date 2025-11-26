@@ -20,6 +20,7 @@ export const TaskStarter: FC = () => {
 
   const onClickHandler = () => {
     mutate(value);
+    setValue('');
   }
 
   return (
