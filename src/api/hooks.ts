@@ -9,7 +9,10 @@ let tasksMock: ITask[] = [];
 export const useGetTasks = () => {
   return useQuery({
     queryKey: ["getTasks"],
-    queryFn: () => tasksMock,
+    queryFn: () => {
+      tasksMock = tasksMock.map((task) => task)
+      return tasksMock
+    },
   })
 }
 
@@ -47,8 +50,8 @@ export const useStopTask = () => {
       console.log(tasksMock);
       return Promise.resolve();
     },
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ['getTasks'] })
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['getTasks'] })
     },
   });
 }

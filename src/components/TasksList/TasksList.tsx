@@ -1,23 +1,18 @@
 import { FC } from "react";
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
+import { PlusCircleOutlined } from "@ant-design/icons";
 
 import { useGetTasks } from "@/src/api/hooks";
 import { ITask } from "@/src/api/types";
 import { Task } from "../Task";
 import { Button } from "../Button";
-import { PlusCircleOutlined } from "@ant-design/icons";
 
 const renderTasks = (tasks: ITask[]) => tasks.map((task) => <Task key={task.id} {...task} />)
 
 export const TasksList: FC = () => {
   const t = useTranslations();
-  const hook = useGetTasks();
-
-  // TODO: разобраться, почему иначе не работает
-  // console.log(hook);
-  const { data } = hook;
-  // console.log(data);
+  const { data } = useGetTasks();
 
   const addDoneTaskHandler = () => { }
 
