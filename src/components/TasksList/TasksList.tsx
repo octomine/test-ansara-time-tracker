@@ -23,18 +23,22 @@ export const TasksList: FC = () => {
   const noTasks = activeTasks.length === 0 && pausedTasks.length === 0;
 
   return (
-    <div className={clsx('flex', 'flex-col', 'items-left')}>
-      {noTasks ? t('noTasks') : (<>
-        <div>{renderTasks(activeTasks)}</div>
-        <div>{renderTasks(pausedTasks)}</div>
-      </>)}
-      <div className={clsx('flex', 'flex-row', 'items-center')}>
+    <div className={clsx('flex', 'flex-col', 'items-start', 'gap-1.5')}>
+      {noTasks ? t('noTasks') : (
+        <div className={clsx('flex', 'flex-col', 'items-start', 'gap-1')}>
+          <div>{renderTasks(activeTasks)}</div>
+          <div>{renderTasks(pausedTasks)}</div>
+        </div>
+      )}
+      <div className={clsx('flex', 'flex-row', 'items-center', 'gap-2')}>
         <div>{t('doneTasks')}</div>
         <Button onClick={addDoneTaskHandler}>
           <PlusCircleOutlined />
         </Button>
       </div>
-      {doneTasks.length === 0 ? t('noDoneTasks') : renderTasks(doneTasks)}
+      <div>
+        {doneTasks.length === 0 ? t('noDoneTasks') : renderTasks(doneTasks)}
+      </div>
     </div>
   )
 }

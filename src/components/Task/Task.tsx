@@ -18,13 +18,13 @@ export const Task: FC<ITask> = ({ id, name, start, end, waiting }) => {
   const rangeString = `${start}${end ? ` - ${end}` : ''}`;
 
   return (
-    <div data-testid='task-control' className={clsx('flex', 'flex-row', 'items-center')}>
-      <div className={clsx('flex', 'flex-col', 'items-left')}>
+    <div data-testid='task-control' className={clsx('flex', 'flex-row', 'items-center', 'gap-2')}>
+      <div className={clsx('flex', 'flex-col', 'items-start')}>
         <div>{name}</div>
         <div>{rangeString}</div>
       </div>
       {!end && (
-        <div>
+        <div className={clsx('flex', 'flex-row', 'gap-1')}>
           {waiting ? (
             <Button onClick={onPlayHandler}>
               <PlayCircleOutlined />
