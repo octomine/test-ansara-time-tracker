@@ -1,14 +1,19 @@
 import clsx from "clsx"
 import { FC } from "react"
+import { CheckCircleOutlined, PauseCircleOutlined, PlayCircleOutlined } from "@ant-design/icons";
 
 import { ITask } from "@/src/api/types"
 import { Button } from "../Button";
-import { CheckCircleOutlined, PauseCircleOutlined, PlayCircleOutlined } from "@ant-design/icons";
+import { useStartTask, useStopTask } from "@/src/api/hooks";
 
-export const Task: FC<ITask> = ({ name, start, end, waiting }) => {
+export const Task: FC<ITask> = ({ id, name, start, end, waiting }) => {
+  const { mutate: pause } = useStopTask();
+  const { mutate: play } = useStartTask();
+
+
   const onDoneHandler = () => { }
-  const onPauseHandler = () => { }
-  const onPlayHandler = () => { }
+  const onPauseHandler = () => { pause(id); }
+  const onPlayHandler = () => { play(id); }
 
   const rangeString = `${start}${end ? ` - ${end}` : ''}`;
 

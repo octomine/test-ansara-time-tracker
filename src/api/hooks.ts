@@ -34,13 +34,38 @@ export const useAddTask = () => {
 }
 
 export const useStopTask = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (id: string) => {
+      console.log('STOP!!1');
+      tasksMock = tasksMock.map((task) => {
+        const { id: taskId, waiting } = task
+        console.log(id === taskId);
+        return { ...task, waiting: id === taskId ? true : waiting }
+      });
+      console.log(tasksMock);
+      return Promise.resolve();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['getTasks'] })
+    },
+  });
+}
+
+export const useStartTask = () => {
+  const queryClient = useQueryClient();
+
   return useMutation({
     mutationFn: (id: string) => {
       tasksMock = tasksMock.map((task) => {
-        const { id: taskId } = task
-        return { ...task, waiting: id === taskId }
+        const { id: taskId, waiting } = task
+        return { ...task, waiting: id === taskId ? false : waiting }
       });
       return Promise.resolve();
-    }
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['getTasks'] })
+    },
   });
 }

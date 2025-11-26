@@ -17,6 +17,7 @@ export const TasksList: FC = () => {
   // TODO: разобраться, почему иначе не работает
   console.log(hook);
   const { data } = hook;
+  // console.log(data);
 
   const addDoneTaskHandler = () => { }
 
